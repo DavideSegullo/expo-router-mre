@@ -10,10 +10,11 @@ type SharedSegment = Group<"index"> | Group<"search"> | Group<"profile">;
 export function Tweet({ item }: { item: Post }) {
   const [segment] = useSegments() as [SharedSegment];
   const router = useRouter();
+
   return (
     <Pressable
       onPress={() => {
-        router.push(`/${segment}/post/${item.id}`);
+        router.push(`./post/${item.id}`);
       }}
     >
       {({ hovered, pressed }) => (
@@ -44,7 +45,7 @@ export function Tweet({ item }: { item: Post }) {
             }}
           />
           <View style={{ gap: 4, flex: 1, alignItems: "flex-start" }}>
-            <Link href={`/${segment}/${item.user.user}`} asChild>
+            <Link href={`../${item.user.user}`} asChild>
               <Pressable style={{ alignItems: "flex-start" }}>
                 {({ hovered }) => (
                   <Text
